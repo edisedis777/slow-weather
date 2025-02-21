@@ -23,7 +23,7 @@
 ### Installation:
 **Clone the Repository**:
    bash
-   git clone https://github.com/yourusername/weather-landscape.git
+   git clone
    cd weather-landscape
 ### Open the Project:
 No dependencies required! Simply open index.html in a modern web browser (e.g., Chrome, Firefox).
