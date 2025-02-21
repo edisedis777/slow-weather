@@ -3,6 +3,9 @@ Slow Weather Landscape Concept
 
 <img width="399" alt="Screenshot 2025-02-21 at 21 59 56" src="https://github.com/user-attachments/assets/a15d3c31-8c6c-4ba2-a802-b0734e9ab8de" />
 
+## Live Demo:
+[Click to Visit](https://edisedis777.github.io/slow-weather/)
+
 **Slow Weather** is an interactive web application that visualizes weather data as a dynamic landscape. Built with HTML, CSS, and JavaScript, it fetches real-time weather information from the [Open-Meteo API](https://open-meteo.com/) and transforms it into a scenic display featuring a terrain shaped by hourly temperatures, a swaying leaf indicating wind speed, and atmospheric effects like rain, snow, and clouds.
 
 ## Features
