@@ -17,8 +17,7 @@ Slow Weather Landscape Concept
 - **Temperature Toggle**: Switch between Celsius and Fahrenheit with a button anchored to the terrain.
 - **Responsive Design**: Rounded corners and a clean layout adapt to various screen sizes.
 
-## Installation
-
+### Installation:
 **Clone the Repository**:
    bash
    git clone https://github.com/yourusername/weather-landscape.git
