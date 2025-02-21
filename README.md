@@ -1,6 +1,10 @@
 # Slow-Weather
 Slow Weather Landscape Concept
 
+
+<img width="406" alt="Screenshot 2025-02-21 at 17 28 10" src="https://github.com/user-attachments/assets/75d25b9d-078f-4842-9067-4baa3bccced5" />
+
+
 ### Key features:
 
 #### Layout:
