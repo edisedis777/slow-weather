@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Landscape</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #f0f0f0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+
+      .input-section {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      input {
+        padding: 10px;
+        font-size: 16px;
+        width: 200px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #45a049;
+      }
+
+      button:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+
+      .landscape {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: #87ceeb;
+      }
+
+      .sky {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        transition: background 1s;
+        background: linear-gradient(to bottom, #87ceeb, #b6e3ff);
+      }
+
+      .sun {
+        width: 80px;
+        height: 80px;
+        background: #ffd700;
+        border-radius: 50%;
+        position: absolute;
+        right: 100px;
+        top: 50px;
+        box-shadow: 0 0 50px #ffd700;
+        transition: all 1s;
+        animation: glow 2s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 30px #ffd700;
+        }
+        to {
+          box-shadow: 0 0 60px #ffd700;
+        }
+      }
+
+      .cloud {
+        background: white;
+        border-radius: 20px;
+        position: absolute;
+        opacity: 0.9;
+        animation: float 30s linear infinite;
+        z-index: 1;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateX(-150px);
+        }
+        to {
+          transform: translateX(1350px);
+        }
+      }
+
+      .terrain {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 40%;
+        z-index: 2;
+      }
+
+      .terrain-path {
+        fill: url(#terrainGradient);
+        transition: d 1s ease-in-out;
+      }
+
+      .temperature-label {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        z-index: 3;
+        transition: all 0.5s;
+      }
+
+      .weather-info {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.6;
+        z-index: 10;
+        backdrop-filter: blur(5px);
+      }
+
+      .rain {
+        position: absolute;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.6);
+        animation: rain 1s linear infinite;
+        z-index: 1;
+      }
+
+      @keyframes rain {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(1000%);
+        }
+      }
+
+      .wind-arrow {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        backdrop-filter: blur(5px);
+      }
+
+      .arrow {
+        width: 60px;
+        height: 4px;
+        background: white;
+        position: relative;
+        transform-origin: left center;
+        transition: transform 1s;
+      }
+
+      .arrow::after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: -8px;
+        border-left: 20px solid white;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+      }
+
+      .error-message {
+        color: #ff0000;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input-section">
+        <input type="text" id="cityInput" placeholder="Enter city name" />
+        <button onclick="getWeather()" id="searchButton">Show Weather</button>
+        <div class="error-message" id="errorMessage"></div>
+      </div>
+      <div class="landscape">
+        <div class="sky"></div>
+        <div class="sun"></div>
+        <svg class="terrain" preserveAspectRatio="none" viewBox="0 0 1000 400">
+          <defs>
+            <linearGradient
+              id="terrainGradient"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%">
+              <stop offset="0%" style="stop-color: #4caf50" />
+              <stop offset="100%" style="stop-color: #2e7d32" />
+            </linearGradient>
+          </defs>
+          <path
+            class="terrain-path"
+            d="M0 400 L0 300 Q 500 200 1000 300 L1000 400 Z" />
+        </svg>
+        <div class="weather-info"></div>
+        <div class="wind-arrow">
+          <div class="arrow"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const GEOCODING_API = "https://geocoding-api.open-meteo.com/v1/search";
+      const WEATHER_API = "https://api.open-meteo.com/v1/forecast";
+
+      async function getWeather() {
+        const cityName = document.getElementById("cityInput").value.trim();
+        const errorMessage = document.getElementById("errorMessage");
+        const searchButton = document.getElementById("searchButton");
+
+        if (!cityName) {
+          showError("Please enter a city name");
+          return;
+        }
+
+        searchButton.disabled = true;
+        errorMessage.style.display = "none";
+
+        try {
+          // Get coordinates from city name
+          const geoResponse = await fetch(
+            `${GEOCODING_API}?name=${encodeURIComponent(
+              cityName
+            )}&count=1&language=en&format=json`
+          );
+          const geoData = await geoResponse.json();
+
+          if (!geoData.results || geoData.results.length === 0) {
+            showError("City not found!");
+            return;
+          }
+
+          const { latitude, longitude } = geoData.results[0];
+
+          // Get weather data including hourly temperature
+          const weatherResponse = await fetch(
+            `${WEATHER_API}?latitude=${latitude}&longitude=${longitude}` +
+              `&current=temperature_2m,relative_humidity_2m,precipitation,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,is_day` +
+              `&hourly=temperature_2m&forecast_days=1`
+          );
+          const weatherData = await weatherResponse.json();
+
+          updateLandscape(weatherData);
+        } catch (error) {
+          console.error("Error:", error);
+          showError("Error fetching weather data!");
+        } finally {
+          searchButton.disabled = false;
+        }
+      }
+
+      function showError(message) {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+        document.getElementById("searchButton").disabled = false;
+      }
+
+      function updateTerrainPath(temperatures) {
+        const svg = document.querySelector(".terrain");
+        const path = svg.querySelector(".terrain-path");
+
+        // Create terrain path based on temperature data
+        const width = 1000;
+        const height = 400;
+        const points = temperatures.map((temp, i) => {
+          const x = (i / (temperatures.length - 1)) * width;
+          // Scale temperature to reasonable height values
+          const y = height - (((temp + 20) / 60) * height * 0.6 + height * 0.2);
+          return `${x} ${y}`;
+        });
+
+        const pathData = `M0 ${height} L${points.join(
+          " L"
+        )} L${width} ${height} Z`;
+        path.setAttribute("d", pathData);
+
+        // Add temperature labels
+        document
+          .querySelectorAll(".temperature-label")
+          .forEach((label) => label.remove());
+        temperatures.forEach((temp, i) => {
+          if (i % 6 === 0) {
+            // Show every 6th temperature
+            const label = document.createElement("div");
+            label.className = "temperature-label";
+            label.textContent = `${Math.round(temp)}°C`;
+            label.style.left = `${(i / (temperatures.length - 1)) * 100}%`;
+            label.style.bottom = `${((temp + 20) / 60) * 40 + 10}%`;
+            document.querySelector(".landscape").appendChild(label);
+          }
+        });
+      }
+
+      function updateLandscape(weather) {
+        // Update weather info panel
+        const weatherInfo = document.querySelector(".weather-info");
+        weatherInfo.innerHTML = `
+                <div>Temperature: ${weather.current.temperature_2m}°C</div>
+                <div>Humidity: ${weather.current.relative_humidity_2m}%</div>
+                <div>Wind: ${weather.current.wind_speed_10m} m/s</div>
+                <div>Clouds: ${weather.current.cloud_cover}%</div>
+                <div>Pressure: ${weather.current.pressure_msl} hPa</div>
+                <div>Precipitation: ${weather.current.precipitation} mm</div>
+            `;
+
+        // Update terrain based on hourly temperatures
+        updateTerrainPath(weather.hourly.temperature_2m);
+
+        // Update sky color based on cloud cover and time of day
+        const sky = document.querySelector(".sky");
+        const cloudiness = weather.current.cloud_cover;
+        const isDay = weather.current.is_day;
+
+        if (isDay) {
+          sky.style.background = `linear-gradient(to bottom, 
+                    rgba(135,206,235,${1 - cloudiness / 150}), 
+                    rgba(182,227,255,${1 - cloudiness / 150}))`;
+        } else {
+          sky.style.background = `linear-gradient(to bottom, 
+                    rgba(25,25,112,${1 - cloudiness / 150}), 
+                    rgba(65,105,225,${1 - cloudiness / 150}))`;
+        }
+
+        // Update sun/moon
+        const sun = document.querySelector(".sun");
+        if (isDay) {
+          sun.style.background = "#FFD700";
+          sun.style.opacity = 1 - cloudiness / 150;
+        } else {
+          sun.style.background = "#FFFFFF";
+          sun.style.opacity = 0.8 - cloudiness / 150;
+        }
+
+        // Update wind direction
+        const arrow = document.querySelector(".arrow");
+        arrow.style.transform = `rotate(${weather.current.wind_direction_10m}deg)`;
+
+        // Clear existing weather effects
+        document.querySelectorAll(".cloud, .rain").forEach((el) => el.remove());
+
+        // Add clouds
+        if (cloudiness > 0) {
+          addClouds(cloudiness);
+        }
+
+        // Add rain if there's precipitation
+        if (weather.current.precipitation > 0) {
+          addRain(weather.current.precipitation);
+        }
+      }
+
+      function addClouds(cloudiness) {
+        const numClouds = Math.ceil(cloudiness / 20);
+        for (let i = 0; i < numClouds; i++) {
+          const cloud = document.createElement("div");
+          cloud.className = "cloud";
+          cloud.style.width = Math.random() * 100 + 100 + "px";
+          cloud.style.height = Math.random() * 40 + 40 + "px";
+          cloud.style.top = Math.random() * 200 + "px";
+          cloud.style.animationDelay = Math.random() * 20 + "s";
+          document.querySelector(".landscape").appendChild(cloud);
+        }
+      }
+
+      function addRain(precipitation) {
+        const raindrops = Math.min(Math.ceil(precipitation * 10), 100);
+        for (let i = 0; i < raindrops; i++) {
+          const rain = document.createElement("div");
+          rain.className = "rain";
+          rain.style.left = Math.random() * 100 + "%";
+          rain.style.height = Math.random() * 20 + 10 + "px";
+          rain.style.animationDelay = Math.random() * 2 + "s";
+          document.querySelector(".landscape").appendChild(rain);
+        }
+      }
+
+      // Add Enter key support
+      document
+        .getElementById("cityInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            getWeather();
+          }
+        });
+    </script>
+  </body>
+</html>
