@@ -42,9 +42,4 @@ MIT License
 
 ## Contributing
 Feel free to open issues or submit pull requests for improvements.
--Enter a city name
-
-#### The visualization will show:
--Animated temperature terrain with labels
--Current weather conditions
 
