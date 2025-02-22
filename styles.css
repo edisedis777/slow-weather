@@ -1,0 +1,281 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  width: 100%;
+}
+
+.input-section {
+  text-align: center;
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 14px;
+  font-size: 16px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.landscape {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #87ceeb;
+}
+
+.sky {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: background 1s;
+  background: linear-gradient(to bottom, #87ceeb, #b6e3ff);
+}
+
+.sun {
+  width: 60px;
+  height: 60px;
+  background: #ffd700;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  box-shadow: 0 0 50px #ffd700;
+  transition: all 1s;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 30px #ffd700;
+  }
+  to {
+    box-shadow: 0 0 60px #ffd700;
+  }
+}
+
+.cloud {
+  background: white;
+  border-radius: 20px;
+  position: absolute;
+  opacity: 0.9;
+  animation: float 30s linear infinite;
+  z-index: 1;
+}
+
+@keyframes float {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(calc(100vw + 50px));
+  }
+}
+
+.terrain {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  z-index: 2;
+}
+
+.terrain-path {
+  fill: url(#terrainGradient);
+  transition: d 1s ease-in-out;
+}
+
+.time-axis-bg {
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+.time-label {
+  font-size: 12px;
+  fill: white;
+  text-anchor: middle;
+  font-family: Arial, sans-serif;
+}
+
+.temperature-label {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 3;
+  transition: all 0.5s;
+}
+
+.weather-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+}
+
+.rain {
+  position: absolute;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: rain 1s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rain {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(420px);
+  }
+}
+
+.snow {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: snow 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes snow {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(420px);
+  }
+}
+
+.leaf {
+  position: absolute;
+  z-index: 4;
+  width: 40px;
+  height: 50px;
+}
+
+.leaf-svg {
+  transition: transform 0.5s;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.toggle-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  font-size: 14px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 20;
+  width: auto;
+  min-width: 120px;
+}
+
+.toggle-button:hover {
+  background: #1976d2;
+}
+
+.error-message {
+  color: #ff0000;
+  text-align: center;
+  margin-top: 10px;
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+  }
+  .landscape {
+    height: 300px;
+  }
+  .sun {
+    width: 50px;
+    height: 50px;
+    right: 15px;
+    top: 20px;
+  }
+  .terrain {
+    height: 35%;
+  }
+  .toggle-button {
+    font-size: 13px;
+    bottom: 15px;
+  }
+  @keyframes rain {
+    to {
+      transform: translateY(320px);
+    }
+  }
+  @keyframes snow {
+    to {
+      transform: translateY(320px);
+    }
+  }
+}
