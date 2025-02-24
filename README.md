@@ -15,9 +15,8 @@
 - **Weather Effects**: 
   - Raindrops or snowflakes fall based on precipitation levels and temperature (rain if > 0°C, snow if < 0°C).
   - Clouds drift across the sky proportional to cloud cover.
-  - Day/night sky transitions with a glowing sun or moon.
-- **Wind Visualization**: A single leaf sways on the terrain, with animation speed reflecting wind speed (calmer at 4s, faster at 1s for 20+ m/s).
-- **Time Axis**: Integrated at the terrain’s base, showing 6-hour intervals (00:00, 06:00, 12:00, 18:00, 24:00) with rounded styling.
+  - Day/night sky transitions.
+- **Time Axis**: Integrated at the terrain’s base, showing 6-hour intervals (00:00, 06:00, 12:00, 18:00, 24:00).
 - **Temperature Toggle**: Switch between Celsius and Fahrenheit with a button anchored to the terrain.
 - **Responsive Design**: Rounded corners and a clean layout adapt to various screen sizes.
 
@@ -46,6 +45,7 @@ Toggle between °C and °F using the button at the terrain’s base.
 ### 🦜 Interact:
 The sun/moon adjusts with day/night status, and clouds reflect current cloud cover.
 The time axis aligns with the terrain’s 24-hour temperature profile.
+Zen mode for a distraction-free experience.
 
 ### ⚙️ How It Works
 Data Source: Uses Open-Meteo’s free weather API for current and hourly forecast data **(no API key required).**
@@ -57,15 +57,13 @@ Tech Stack:
 
 ### 🥡 Key Components:
 SVG terrain with integrated time axis.
-Leaf animation tied to wind speed.
-Temperature-driven precipitation and color changes (snowy terrain below 0°C).
+Temperature-driven precipitation and color changes.
 
 ### 📔 Contributing
-Feel free to fork this repository and submit pull requests with enhancements! Ideas for improvement:
+Feel free to fork this repository and submit pull requests with enhancements! 
 
-Add wind direction to the leaf animation.
+Ideas for improvement:
 Include more weather effects (e.g., fog, thunderstorms).
-Enhance the leaf design or add seasonal variations.
 
 ### 🎥 Credits
 Built by: edis
