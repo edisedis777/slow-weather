@@ -1,7 +1,8 @@
 # 🌤️ Slow Weather
 ## Slow Weather Landscape Concept
 
-<img width="399" alt="Screenshot 2025-02-21 at 21 59 56" src="https://github.com/user-attachments/assets/a15d3c31-8c6c-4ba2-a802-b0734e9ab8de" />
+<img width="399" alt="Screenshot 2025-02-21 at 21 59 56" src="https://github.com/user-attachments/assets/822928d6-1ffb-4a96-a0d7-7b2a999006e8" />
+
 
 ### 🎉 Live Demo:
 [Click here to Visit](https://edisedis777.github.io/slow-weather/)
