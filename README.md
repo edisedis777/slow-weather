@@ -1,4 +1,4 @@
-# 🌤️ Slow-Weather
+# Slow-Weather
 [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#)
 [![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
 [![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#)
@@ -6,7 +6,7 @@
 [![Markdown](https://img.shields.io/badge/Markdown-%23000000.svg?logo=markdown&logoColor=white)](#)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-**Slow Weather** is an interactive web application that visualizes weather data as a dynamic landscape. Built with HTML, CSS, and JavaScript, it fetches real-time weather information from the [Open-Meteo API](https://open-meteo.com/) and transforms it into a scenic display featuring a terrain shaped by hourly temperatures, a swaying leaf indicating wind speed, and atmospheric effects like rain, snow, and clouds.
+**🌤️ Slow Weather** is an interactive web application that visualizes weather data as a dynamic landscape. Built with HTML, CSS, and JavaScript, it fetches real-time weather information from the [Open-Meteo API](https://open-meteo.com/) and transforms it into a scenic display featuring a terrain shaped by hourly temperatures, a swaying leaf indicating wind speed, and atmospheric effects like rain, snow, and clouds.
 
 
 <img width="399" alt="Screenshot 2025-02-21 at 21 59 56" src="https://github.com/user-attachments/assets/822928d6-1ffb-4a96-a0d7-7b2a999006e8" />
@@ -76,5 +76,5 @@ This project is open-source under the MIT License.
 
 <div align="right">
 
-[Back To Top ⬆️](#🌤️-Slow-Weather)
+[Back To Top ⬆️](#Slow-Weather)
 </div>
