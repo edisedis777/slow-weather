@@ -1,16 +1,22 @@
-# 🌤️ Slow Weather
-## Slow Weather Landscape Concept
+# 🌤️ Slow-Weather
+[![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#)
+[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
+[![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
+[![Markdown](https://img.shields.io/badge/Markdown-%23000000.svg?logo=markdown&logoColor=white)](#)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+**Slow Weather** is an interactive web application that visualizes weather data as a dynamic landscape. Built with HTML, CSS, and JavaScript, it fetches real-time weather information from the [Open-Meteo API](https://open-meteo.com/) and transforms it into a scenic display featuring a terrain shaped by hourly temperatures, a swaying leaf indicating wind speed, and atmospheric effects like rain, snow, and clouds.
+
 
 <img width="399" alt="Screenshot 2025-02-21 at 21 59 56" src="https://github.com/user-attachments/assets/822928d6-1ffb-4a96-a0d7-7b2a999006e8" />
 
 
-### 🎉 Live Demo:
-[Click here to Visit](https://edisedis777.github.io/slow-weather/)
+### 🎉 Demo:
+Try it Live: [Here](https://edisedis777.github.io/slow-weather/)
 
-**Slow Weather** is an interactive web application that visualizes weather data as a dynamic landscape. Built with HTML, CSS, and JavaScript, it fetches real-time weather information from the [Open-Meteo API](https://open-meteo.com/) and transforms it into a scenic display featuring a terrain shaped by hourly temperatures, a swaying leaf indicating wind speed, and atmospheric effects like rain, snow, and clouds.
 
 ### ☁️ Features
-
 - **Dynamic Terrain**: The landscape’s height varies with hourly temperature data over a 24-hour period.
 - **Weather Effects**: 
   - Raindrops or snowflakes fall based on precipitation levels and temperature (rain if > 0°C, snow if < 0°C).
@@ -29,8 +35,6 @@
 No dependencies required! Simply open index.html in a modern web browser (e.g., Chrome, Firefox).
 Alternatively, serve it locally using a tool like Live Server in VS Code:
 bash
-Wrap
-Copy
 npx live-server
 
 ### ⌨️ Usage
@@ -60,15 +64,17 @@ SVG terrain with integrated time axis.
 Temperature-driven precipitation and color changes.
 
 ### 📔 Contributing
-Feel free to fork this repository and submit pull requests with enhancements! 
+Feel free to contribute!
 
-Ideas for improvement:
-Include more weather effects (e.g., fog, thunderstorms).
 
 ### 🎥 Credits
-Built by: edis
-Weather Data: Open-Meteo
-Inspiration: Adapted from the concept of weather_landscape by lds133, reimagined as a web-based visualization.
+- Weather Data: Open-Meteo
+- Inspiration: Adapted from the concept of weather_landscape by lds133, reimagined as a web-based visualization.
 
 ### ⚖️ License
-This project is open-source under the MIT License. Feel free to use, modify, and distribute it as you see fit!
+This project is open-source under the MIT License.
+
+<div align="right">
+
+[Back To Top ⬆️](#Slow-Weather)
+</div>
