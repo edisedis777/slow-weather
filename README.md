@@ -4,7 +4,6 @@
 [![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
 [![Markdown](https://img.shields.io/badge/Markdown-%23000000.svg?logo=markdown&logoColor=white)](#)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **🌤️ Slow Weather** is an interactive web application that visualizes weather data as a dynamic landscape. Built with HTML, CSS, and JavaScript, it fetches real-time weather information from the [Open-Meteo API](https://open-meteo.com/) and transforms it into a scenic display featuring a terrain shaped by hourly temperatures, a swaying leaf indicating wind speed, and atmospheric effects like rain, snow, and clouds.
 
@@ -64,15 +63,14 @@ SVG terrain with integrated time axis.
 Temperature-driven precipitation and color changes.
 
 ### 📔 Contributing
-Feel free to contribute!
-
+Contributions are welcome! 
 
 ### 🎥 Credits
 - Weather Data: Open-Meteo
 - Inspiration: Adapted from the concept of weather_landscape by lds133, reimagined as a web-based visualization.
 
 ### ⚖️ License
-This project is open-source under the MIT License.
+Distributed under the GNU Affero General Public License v3.0 License. See `LICENSE` for more information.
 
 <div align="right">
 
